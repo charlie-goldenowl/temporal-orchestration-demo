@@ -1,0 +1,40 @@
+{
+  "name": "temporal-order-service",
+  "version": "1.0.0",
+  "description": "Temporal microservice with SAGA pattern for order processing and payment",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start:worker": "tsx src/worker.ts",
+    "start:workers": "tsx src/worker-cluster.ts",
+    "start:workers:2": "WORKER_COUNT=2 tsx src/worker-cluster.ts",
+    "start:workers:4": "WORKER_COUNT=4 tsx src/worker-cluster.ts",
+    "start:workers:8": "WORKER_COUNT=8 tsx src/worker-cluster.ts",
+    "start:client": "tsx src/client.ts",
+    "test:payment": "tsx src/client-test-payment.ts",
+    "dev:worker": "tsx watch src/worker.ts",
+    "dev:client": "tsx watch src/client.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format --write .",
+    "check": "biome check .",
+    "check:fix": "biome check --write ."
+  },
+  "keywords": ["temporal", "microservice", "saga", "workflow", "typescript"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@temporalio/client": "^1.9.0",
+    "@temporalio/worker": "^1.9.0",
+    "@temporalio/workflow": "^1.9.0",
+    "@temporalio/activity": "^1.9.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^20.10.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
